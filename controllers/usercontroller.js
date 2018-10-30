@@ -11,7 +11,6 @@ router.post("/signup", (req, res) => {
     lastName: req.body.lastName,
     email: req.body.email,
     permission: req.body.permission,
-    section: req.body.section,
     passwordhash: bcrypt.hashSync(req.body.password, 10)
   }).then(
     (createSuccess = user => {
