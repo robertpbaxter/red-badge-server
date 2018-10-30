@@ -4,13 +4,13 @@ const Housing = require("../db").import("../models/housing");
 //POST: create new entry
 router.post("/", (req, res) =>
   Housing.create({
-    residenceType: req.body.housing.residenceType,
-    rooms: req.body.housing.rooms,
-    bathrooms: req.body.housing.bathrooms,
-    address: req.body.housing.address,
-    petsAllowed: req.body.housing.petsAllowed,
-    facilities: req.body.housing.facilities,
-    price: req.body.housing.price,
+    residenceType: req.body.residenceType,
+    rooms: req.body.rooms,
+    bathrooms: req.body.bathrooms,
+    address: req.body.address,
+    petsAllowed: req.body.petsAllowed,
+    facilities: req.body.facilities,
+    price: req.body.price,
     owner: req.user.id
   })
     .then(housing => res.json({ housing: housing }))
@@ -33,7 +33,7 @@ router.get("/:id", (req, res) =>
 
 //PUT: update entry
 router.put("/:id", (req, res) =>
-  Housing.update(req.body.housing, { where: { id: req.params.id } })
+  Housing.update(req.body, { where: { id: req.params.id } })
     .then(data => res.status(200).json(data))
     .catch(err => res.send(500).json(req.errors))
 );

@@ -4,10 +4,10 @@ const Ticket = require("../db").import("../models/ticket");
 //POST: create new ticket
 router.post("/", (req, res) =>
   Ticket.create({
-    type: req.body.ticket.type,
-    issue: req.body.ticket.issue,
-    content: req.body.ticket.content,
-    status: req.body.ticket.status,
+    type: req.body.type,
+    issue: req.body.issue,
+    content: req.body.content,
+    status: req.body.status,
     contactId: req.user.id
   })
     .then(ticket => res.json({ ticket: ticket }))
@@ -30,7 +30,7 @@ router.get("/:id", (req, res) =>
 
 //PUT: update ticket
 router.put("/:id", (req, res) =>
-  Ticket.update(req.body.ticket, { where: { id: req.params.id } })
+  Ticket.update(req.body, { where: { id: req.params.id } })
     .then(data => res.status(200).json(data))
     .catch(err => res.send(500).json(req.errors))
 );
