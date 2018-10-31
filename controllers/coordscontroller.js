@@ -4,7 +4,7 @@ const Coords = require("../db").import("../models/coords");
 //POST: create new coordinates
 router.post("/", (req, res) =>
   Coords.create({
-    entryId: req.body.entryId,
+    housingId: req.body.housingId,
     latitude: req.body.lat,
     longitude: req.body.lng
   })
