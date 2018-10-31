@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Coordinate = sequelize.define("coordinate", {
+  const Coords = sequelize.define("coords", {
     entryId: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -13,4 +13,5 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     }
   });
+  return Coords;
 };
