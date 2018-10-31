@@ -20,21 +20,21 @@ router.get("/", (req, res) =>
 );
 
 //GET: find coordinates (by listing ID)
-router.get("/:entryId", (req, res) =>
-  Coords.findOne({ where: { entryId: req.params.entryId } })
+router.get("/:housingId", (req, res) =>
+  Coords.findOne({ where: { housingId: req.params.housingId } })
     .then(data => res.json(data))
     .catch(err => res.status(500).json(req.errors))
 );
 //PUT: update coordinates (by listing ID)
-router.put("/:entryId", (req, res) =>
-  Coords.update(req.body, { where: { entryId: req.params.entryId } })
+router.put("/:housingId", (req, res) =>
+  Coords.update(req.body, { where: { housingId: req.params.housingId } })
     .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json(req.errors))
 );
 
 //DELETE: delete coordinates (by listing ID)
-router.delete("/:entryId", (req, res) =>
-  Coords.destroy({ where: { entryId: req.params.entryId } })
+router.delete("/:housingId", (req, res) =>
+  Coords.destroy({ where: { housingId: req.params.housingId } })
     .then(data => rs.status(200).json(data))
     .catch(err => res.status(500).json(req.errors))
 );
