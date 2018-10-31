@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Coords = sequelize.define("coords", {
-    entryId: {
+    housingId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
