@@ -31,6 +31,13 @@ router.get("/:id", (req, res) =>
     .catch(err => res.status(500).json(req.errors))
 );
 
+//GET: find all entries (from single user)
+router.get("/owner/:id", (req, res) =>
+  Housing.findAll({ where: { owner: req.params.id } })
+    .then(data => res.json(data))
+    .catch(err => res.status(500).json(req.errors))
+);
+
 //PUT: update entry
 router.put("/:id", (req, res) =>
   Housing.update(req.body, { where: { id: req.params.id } })
