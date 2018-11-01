@@ -31,9 +31,9 @@ router.get("/:id", (req, res) =>
     .catch(err => res.status(500).json(req.errors))
 );
 
-//GET: find all entries (from single user)
-router.get("/owner/:id", (req, res) =>
-  Housing.findAll({ where: { owner: req.params.id } })
+//GET: find all entries (for self)
+router.get("/owner/", (req, res) =>
+  Housing.findAll({ where: { owner: req.user.id } })
     .then(data => res.json(data))
     .catch(err => res.status(500).json(req.errors))
 );
