@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     longitude: {
       type: DataTypes.FLOAT,
       allowNull: false
+    },
+    owner: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   });
   return Coords;
