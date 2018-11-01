@@ -20,16 +20,16 @@ router.get("/", (req, res) =>
     .catch(err => res.send(err))
 );
 
-//GET: find coordinates (by listing ID)
-router.get("/:id", (req, res) =>
-  Coords.findOne({ where: { housingId: req.params.id } })
+//GET: find coordinates(by owner)
+router.get("/owner", (req, res) =>
+  Housing.findAll({ where: { owner: req.user.id } })
     .then(data => res.json(data))
     .catch(err => res.status(500).json(req.errors))
 );
 
-//GET: find coordinates(by owner)
-router.get("/owner/:id", (req, res) =>
-  Housing.findAll({ where: { owner: req.params.id } })
+//GET: find coordinates (by listing ID)
+router.get("/:id", (req, res) =>
+  Coords.findOne({ where: { housingId: req.params.id } })
     .then(data => res.json(data))
     .catch(err => res.status(500).json(req.errors))
 );
