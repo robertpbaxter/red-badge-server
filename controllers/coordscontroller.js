@@ -28,7 +28,7 @@ router.get("/:id", (req, res) =>
 );
 
 //GET: find coordinates(by owner)
-router.get("/owner", (req, res) =>
+router.get("/owner/:id", (req, res) =>
   Housing.findAll({ where: { owner: req.params.id } })
     .then(data => res.json(data))
     .catch(err => res.status(500).json(req.errors))

@@ -24,16 +24,16 @@ router.get("/", (req, res) =>
     .catch(err => res.send(err))
 );
 
-//GET: find single entry
-router.get("/:id", (req, res) =>
-  Housing.findOne({ where: { id: req.params.id } })
+//GET: find all entries (for self)
+router.get("/owner", (req, res) =>
+  Housing.findAll({ where: { owner: req.user.id } })
     .then(data => res.json(data))
     .catch(err => res.status(500).json(req.errors))
 );
 
-//GET: find all entries (for self)
-router.get("/ownedby", (req, res) =>
-  Housing.findAll({ where: { owner: req.user.id } })
+//GET: find single entry
+router.get("/:id", (req, res) =>
+  Housing.findOne({ where: { id: req.params.id } })
     .then(data => res.json(data))
     .catch(err => res.status(500).json(req.errors))
 );
