@@ -32,7 +32,7 @@ router.get("/:id", (req, res) =>
 );
 
 //GET: find all entries (for self)
-router.get("/owner/", (req, res) =>
+router.get("/owner", (req, res) =>
   Housing.findAll({ where: { owner: req.user.id } })
     .then(data => res.json(data))
     .catch(err => res.status(500).json(req.errors))
