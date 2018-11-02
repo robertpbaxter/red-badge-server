@@ -44,7 +44,7 @@ router.put("/:id", (req, res) =>
 //DELETE: delete coordinates (by listing ID)
 router.delete("/:id", (req, res) =>
   Coords.destroy({ where: { housingId: req.params.id } })
-    .then(data => rs.status(200).json(data))
+    .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json(req.errors))
 );
 
