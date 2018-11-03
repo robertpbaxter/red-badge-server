@@ -29,7 +29,7 @@ router.get("/owner", (req, res) =>
 
 //DELETE: delete all coordinates from self (for deleting user)
 router.delete("/deleteaccount", (req, res) =>
-  Coords.destroy({ where: { owner: req.user.id } })
+  Coords.destroy({ where: { owner: req.user.id }, truncate: true })
     .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json(req.errors))
 );
