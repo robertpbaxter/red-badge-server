@@ -62,7 +62,7 @@ router.get("/", validateSession, (req, res) =>
     .catch(err => res.status(500).json(req.errors))
 );
 
-//DELETE: delete all coordinates from self (for deleting user)
+//DELETE: delete account (only applicable to self)
 router.delete("/deleteaccount", (req, res) =>
   User.destroy({ where: { id: req.user.id } })
     .then(data => res.status(200).json(data))
@@ -81,13 +81,6 @@ router.put("/:id", validateSession, (req, res) =>
   User.update(req.body, { where: { id: req.params.id } })
     .then(data => res.status(200).json(data))
     .catch(err => res.send(500).json(req.errors))
-);
-
-//DELETE: delete a user
-router.delete("/:id", validateSession, (req, res) =>
-  User.destroy({ where: { id: req.params.id } })
-    .then(data => res.status(200).json(data))
-    .catch(err => res.status(500).json(req.errors))
 );
 
 module.exports = router;
