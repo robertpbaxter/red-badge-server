@@ -31,6 +31,13 @@ router.get("/owner", (req, res) =>
     .catch(err => res.status(500).json(req.errors))
 );
 
+//DELETE: delete all housing from self (for deleting user)
+router.get("/deleteaccount", (req, res) =>
+  Housing.delete({ where: { owner: req.user.id } })
+    .then(data => res.status(200).json(data))
+    .catch(err => res.status(500).json(req.errors))
+);
+
 //GET: find single entry
 router.get("/:id", (req, res) =>
   Housing.findOne({ where: { id: req.params.id } })

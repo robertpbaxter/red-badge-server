@@ -20,10 +20,17 @@ router.get("/", (req, res) =>
     .catch(err => res.send(err))
 );
 
-//GET: find coordinates(by owner)
+//GET: find coordinates (by owner)
 router.get("/owner", (req, res) =>
-  Housing.findAll({ where: { owner: req.user.id } })
+  Coords.findAll({ where: { owner: req.user.id } })
     .then(data => res.json(data))
+    .catch(err => res.status(500).json(req.errors))
+);
+
+//DELETE: delete all coordinates from self (for deleting user)
+router.get("/deleteaccount", (req, res) =>
+  Coords.delete({ where: { owner: req.user.id } })
+    .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json(req.errors))
 );
 

@@ -55,9 +55,9 @@ router.post("/login", (req, res) => {
   );
 });
 
-//GET: list all users
+//GET: find self
 router.get("/", validateSession, (req, res) =>
-  User.findAll({ where: { permission: "user" } })
+  User.findOne({ where: { id: req.user.id } })
     .then(data => res.json(data))
     .catch(err => res.status(500).json(req.errors))
 );
