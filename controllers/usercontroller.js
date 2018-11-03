@@ -83,4 +83,11 @@ router.put("/:id", validateSession, (req, res) =>
     .catch(err => res.send(500).json(req.errors))
 );
 
+// //DELETE: delete a user
+// router.delete("/:id", validateSession, (req, res) =>
+//   User.destroy({ where: { id: req.params.id } })
+//     .then(data => res.status(200).json(data))
+//     .catch(err => res.status(500).json(req.errors))
+// );
+
 module.exports = router;
