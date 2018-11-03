@@ -63,7 +63,7 @@ router.get("/", validateSession, (req, res) =>
 );
 
 //DELETE: delete account (only applicable to self)
-router.delete("/deleteaccount", (req, res) =>
+router.delete("/deleteaccount", validateSession, (req, res) =>
   User.destroy({ where: { id: req.user.id } })
     .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json(req.errors))
