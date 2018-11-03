@@ -62,6 +62,13 @@ router.get("/", validateSession, (req, res) =>
     .catch(err => res.status(500).json(req.errors))
 );
 
+//DELETE: delete all coordinates from self (for deleting user)
+router.delete("/deleteaccount", (req, res) =>
+  User.destroy({ where: { id: req.user.id } })
+    .then(data => res.status(200).json(data))
+    .catch(err => res.status(500).json(req.errors))
+);
+
 //GET: find user by id
 router.get("/:id", validateSession, (req, res) =>
   User.findOne({ where: { id: req.params.id } })
