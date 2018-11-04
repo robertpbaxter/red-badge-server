@@ -42,16 +42,16 @@ router.post("/", (req, res) =>
     .catch(err => res.status(500).json(req.errors))
 );
 
-//GET: find single message
-router.get("/:id", (req, res) =>
-  Message.findOne({ where: { id: req.params.id } })
+//PUT: update incoming messages as read
+router.put("/", (req, res) =>
+  Message.update(req.body, { where: { recipientId: req.user.id } })
     .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json(req.errors))
 );
 
-//PUT: update message
-router.put("/:id", (req, res) =>
-  Message.update(req.body, { where: { id: req.params.id } })
+//GET: find single message
+router.get("/:id", (req, res) =>
+  Message.findOne({ where: { id: req.params.id } })
     .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json(req.errors))
 );
