@@ -25,6 +25,8 @@ router.get("/outbox", (req, res) =>
 //DELETE: delete all messages from self
 router.delete("/deleteaccount", (req, res) =>
   Message.destroy({ where: { senderId: req.user.id } })
+    .then(data => res.status(200).json(data))
+    .catch(err => res.status(500).json(req.errors))
 );
 
 //POST: create new message
@@ -36,12 +38,14 @@ router.post("/", (req, res) =>
     content: req.body.content,
     status: "new"
   })
+    .then(data => res.status(200).json(data))
+    .catch(err => res.status(500).json(req.errors))
 );
 
 //GET: find single message
 router.get("/:id", (req, res) =>
   Message.findOne({ where: { id: req.params.id } })
-    .then(data => res.json(data))
+    .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json(req.errors))
 );
 
@@ -49,7 +53,7 @@ router.get("/:id", (req, res) =>
 router.put("/:id", (req, res) =>
   Message.update(req.body, { where: { id: req.params.id } })
     .then(data => res.status(200).json(data))
-    .catch(err => res.send(500).json(req.errors))
+    .catch(err => res.status(500).json(req.errors))
 );
 
 //DELETE: delete message
