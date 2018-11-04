@@ -21,6 +21,13 @@ router.get("/", (req, res) =>
     .catch(err => res.send(err))
 );
 
+//DELETE: delete all tickets from self
+router.delete("/deleteaccount", (req, res) =>
+  Ticket.destroy({ where: { owner: req.user.id } })
+    .then(data => res.status(200).json(data))
+    .catch(err => res.status(500).json(req.errors))
+);
+
 //GET: find single ticket
 router.get("/:id", (req, res) =>
   Ticket.findOne({ where: { id: req.params.id } })
