@@ -44,7 +44,10 @@ router.post("/", (req, res) =>
 
 //PUT: update incoming messages as read
 router.put("/", (req, res) =>
-  Message.update({ status: "read" }, { where: { recipientId: req.user.id } })
+  Message.update(
+    { status: "read" },
+    { where: { recipientId: req.user.id, status: "new" } }
+  )
     .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json(req.errors))
 );
