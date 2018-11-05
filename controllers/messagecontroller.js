@@ -3,7 +3,7 @@ const Message = require("../db").import("../models/message");
 
 //GET: count number of unread messages (for notifications)
 router.get("/new", (req, res) =>
-  Message.count({ where: { status: "new" } })
+  Message.count({ where: { recipientId: req.user.id, status: "new" } })
     .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json(req.errors))
 );
