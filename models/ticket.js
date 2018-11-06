@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     status: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM("new", "pending", "resolved", "rejected"),
       allowNull: false
     },
     contactId: {

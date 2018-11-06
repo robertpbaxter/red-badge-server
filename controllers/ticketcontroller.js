@@ -21,6 +21,13 @@ router.get("/", (req, res) =>
     .catch(err => res.send(err))
 );
 
+//GET: list ACTIVE tickets
+router.get("/active", (req, res) =>
+  Ticket.findAll({ where: { status: ["new", "pending"] } })
+    .then(data => res.json(data))
+    .catch(err => res.send(err))
+);
+
 //DELETE: delete all tickets from self
 router.delete("/deleteaccount", (req, res) =>
   Ticket.destroy({ where: { owner: req.user.id } })
