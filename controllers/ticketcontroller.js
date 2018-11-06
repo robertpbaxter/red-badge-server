@@ -8,7 +8,9 @@ router.post("/", (req, res) =>
     issue: req.body.issue,
     content: req.body.content,
     status: req.body.status,
-    contactId: req.user.id
+    contactId: req.user.id,
+    housingId: req.body.housingId,
+    messageId: req.body.messageId
   })
     .then(ticket => res.json({ ticket: ticket }))
     .catch(err => res.send(500).json(req.errors))

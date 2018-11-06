@@ -19,6 +19,14 @@ module.exports = (sequelize, DataTypes) => {
     contactId: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    housingId: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    messageId: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   });
   return Ticket;
