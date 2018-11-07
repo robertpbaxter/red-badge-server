@@ -8,8 +8,8 @@ Front-end repository: <a href="https://github.com/robertpbaxter/red-badge-client
 
 # Features:
 
--Implemented using Node.js, Express, PostgreSQL, and Sequelize
+- Implemented using Node.js, Express, PostgreSQL, and Sequelize
 
--Authentication and encrytion using Bcrypt hashing/salting and JSON Web Tokens for user authentication
+- Authentication and encrytion using Bcrypt hashing/salting and JSON Web Tokens for user authentication
 
--Five models and controllers that implement foreign keys for normalization as manual database associations
+- Five models and controllers that implement foreign keys for normalization as manual database associations
