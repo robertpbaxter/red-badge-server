@@ -10,6 +10,8 @@ Front-end repository: <a href="https://github.com/robertpbaxter/red-badge-client
 
 -Implemented using Node.js, Express, PostgreSQL, and Sequelize
 
+-Deployed via Heroku
+
 -Authentication and encrytion using Bcrypt hashing/salting and JSON Web Tokens for user authentication
 
 -Five models and controllers that implement foreign keys for normalization as manual database associations
