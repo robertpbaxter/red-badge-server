@@ -2,7 +2,7 @@
 
 This repo represents the back end Web API for an Angular application created by Robert Baxter, Jessica Brandt, and Ingeborg Slegers of Eleven Fifty Academy.
 
-View the deployed application (in its current state) at <a href="https://nest-capstone-project.herokuapp.com/home">https://nest-capstone-project.herokuapp.com/home</a>
+View the deployed application (in its current state) at <a href="https://nest-capstone-project.herokuapp.com">https://nest-capstone-project.herokuapp.com</a>
 
 Front-end repository: <a href="https://github.com/robertpbaxter/red-badge-client">https://github.com/robertpbaxter/red-badge-client</a>
 
